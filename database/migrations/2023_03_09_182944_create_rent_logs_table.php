@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->date('rent_date');
             $table->date('return_date');
-            $table->date('actual_return_date')->nullable();
+            $table->date('actual_return')->nullable();
             $table->timestamps();
         });
     }
