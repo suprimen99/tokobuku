@@ -43,6 +43,16 @@ class AuthController extends Controller
 
                 Session::flash('status', 'Failed');
                 Session::flash('message', 'Login invalid');
-                return redirect('/login')->with("Anda Belum Memiliki Akun, Silakan Registrasi!!");
+                return redirect('/login')->with('message, Anda Belum Memiliki Akun, Silakan Registrasi!!');
+    }
+
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('login');
+
     }
 }
