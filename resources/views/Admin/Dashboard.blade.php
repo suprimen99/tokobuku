@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    ini dashboard
-</body>
-</html>
+@extends('layouts.main')
+@section('title','dashboard')
+
+@section('content')
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus sequi ut sunt libero totam incidunt est dolorum! Sunt dolore sint nihil? Molestias deserunt autem, quae eligendi ducimus magni asperiores nesciunt?</p>
+@endsection

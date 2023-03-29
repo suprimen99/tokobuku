@@ -9,7 +9,6 @@ class Usercontroller extends Controller
 {
     public function index(Request $request)
     {
-        // $request->session()->flush();
-        // dd(Auth::user());
+        return view('Client.Profile');
     }
 }

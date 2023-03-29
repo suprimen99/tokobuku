@@ -27,13 +27,12 @@ Route::middleware('onlyguest')->group(function() {
     Route::get('login',[AuthController::class,'login'])->name('login');
     Route::Post('login',[AuthController::class,'Authenticate']);
     Route::get('register',[AuthController::class,'register']);
+    Route::Post('register',[AuthController::class,'registerProcess']);
 });
 
 Route::middleware('auth')->group(function() {
-
     Route::get('logout',[AuthController::class, 'logout']);
     Route::get('dashboard',[DashboardController::class,'index'])->middleware(['only_admin']);
     Route::get('profile',[Usercontroller::class,'index'])->middleware(['only_client' ]);
-
     Route::get('books',[BooksController::class,'index']);
 });

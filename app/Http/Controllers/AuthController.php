@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+
 class AuthController extends Controller
 {
     public function login(Request $request)
@@ -23,11 +27,13 @@ class AuthController extends Controller
             'username' => ['required'],
             'password' => ['required'],
         ]);
- 
-        if (Auth::attempt($credentials)) {
-         
-            if(Auth::user()->status != 'active'){
 
+        if (Auth::attempt($credentials)) {
+
+            if(Auth::user()->status != 'active'){
+                Auth::logout();
+                $request->session()->invalidate();
+                $request->session()->regenerateToken();
                 Session::flash('status', 'Failed');
                 Session::flash('message', 'Akun anda tidak aktif, Mohon hubungi admin!!');
                 return redirect('/login');
@@ -55,4 +61,22 @@ class AuthController extends Controller
         return redirect('login');
 
     }
+
+    public function registerProcess(Request $request)
+    {
+
+        $validated = $request->validate([
+            'username' => 'required|unique:users|max:255',
+            'password' => 'required|max:255',
+            'phone' => 'required|max:255',
+            'address' => 'required'
+        ]);
+
+        $request['password'] = Hash::make($request->password);
+        $user = User::create($request->all());
+        Session::flash('status', 'sucess');
+        Session::flash('message', 'Register success, Wait admin Approval');
+        return redirect('register');
+    }
+
 }

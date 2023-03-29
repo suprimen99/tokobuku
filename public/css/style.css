@@ -1,0 +1,44 @@
+/* login */
+.main{
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.login-box{
+  width: 500px;
+  border: solid 1px;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.login-box form div{
+  padding: 5px;
+}
+
+.login-box form div h1{
+  display: block;
+  text-align: center;
+}
+
+
+
+
+
+/* register */
+.register-box{
+    width: 500px;
+    border: solid 1px;
+    border-radius: 20px;
+    padding: 20px;
+  }
+
+  .register-box form div{
+    padding: 5px;
+  }
+
+  .register-box form div h1{
+    display: block;
+    text-align: center;
+  }
+
+
