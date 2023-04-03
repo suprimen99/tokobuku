@@ -7,8 +7,18 @@ use Illuminate\Support\Facades\Auth;
 
 class Usercontroller extends Controller
 {
-    public function index(Request $request)
+    public function profile(Request $request)
     {
         return view('Client.Profile');
+    }
+
+    public function index()
+    {
+        return view('Admin.Users');
+    }
+
+    public function edit()
+    {
+        return view('Client.profile-edit');
     }
 }
